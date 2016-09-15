@@ -13,7 +13,7 @@
 		<td style="width:5%;">Cabang</td>
 		<td style="width:10%;">teler</td>
 		<td style="width:5%;">Jam</td>
-		<td style="width:13%;">Tanggal Banbanan</td>
+		<td style="width:13%;">Tanggal Ban-banan</td>
 		<td style="width:13%;">Temuan</td>
 		<td style="width:10%;">Denom</td>
 		<td style="width:10%;">Jumlah</td>
