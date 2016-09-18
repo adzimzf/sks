@@ -3,26 +3,47 @@
 <div class="box-body">
 <table id="laporan_temuan" class="table table-hover table-bordered">
 	<thead>
-		<td style="width:5%;">id</td>
-		<td style="width:8%;">no_ba</td>
-		<td style="width:10%;">tanggal ditemukan</td>
+		<td style="width:5%;">No</td>
+		<td style="width:8%;">No BA</td>
+		<td style="width:10%;">Tanggal ditemukan</td>
 		<td style="width:10%;">Penyelia</td>
 		<td style="width:10%;">Manager</td>
 		<td style="width:10%;">Operator</td>
 		<td style="width:10%;">Saksi</td>
 		<td style="width:5%;">Cabang</td>
-		<td style="width:10%;">teler</td>
+		<td style="width:10%;">Teler</td>
 		<td style="width:5%;">Jam</td>
 		<td style="width:13%;">Tanggal Ban-banan</td>
-		<td style="width:13%;">Temuan</td>
-		<td style="width:10%;">Denom</td>
-		<td style="width:10%;">Jumlah</td>
+		<td style="width:15%;">Temuan</td>
+		<td style="width:15%;">Denom</td>
+		<td style="width:15%;">Jumlah</td>
 		<td style="width:10%;">No Seri</td>
 		<td style="width:10%;">Total</td>
+        <td style="width:13%;">AKSI</td>
 	</thead>
+    <tfoot>
+        <td style="width:5%;">No</td>
+        <td style="width:8%;">No BA</td>
+        <td style="width:10%;">Tanggal ditemukan</td>
+        <td style="width:10%;">Penyelia</td>
+        <td style="width:10%;">Manager</td>
+        <td style="width:10%;">Operator</td>
+        <td style="width:10%;">Saksi</td>
+        <td style="width:5%;">Cabang</td>
+        <td style="width:10%;">Teler</td>
+        <td style="width:5%;">Jam</td>
+        <td style="width:13%;">Tanggal Ban-banan</td>
+        <td style="width:15%;">Temuan</td>
+        <td style="width:15%;">Denom</td>
+        <td style="width:15%;">Jumlah</td>
+        <td style="width:10%;">No Seri</td>
+        <td style="width:10%;">Total</td>
+        <td style="width:13%;">AKSI</td>
+    </tfoot>
 	<tbody>
 		
 	</tbody>
+    
 </table>	
 </div>
 
@@ -31,24 +52,13 @@
     $("#laporan_temuan").DataTable({
         "aLengthMenu":[[5,15,30,-1],[5,15,30,"All"]],
         "pageLength":5,
-        scrollY:500,
+        "ordered":false,
         scrollX:true,
-        columnDef:[{
-            targets:[0],
-            orderData:[0,1]
-        },{
-            targets:[1],
-            orderData:[1,0]
-        },{
-            targets:[4],
-            orderData:[4,0]
-        }
-        ],
     	ajax:{
     		url: "{{url('laporantemuanajax')}}",
     		dataSrc:''
     	},columns:[
-    		{data:'id'},
+    		{data:'no'},
     		{data:'no_ba'},
     		{data:'tanggal_ditemukan'},
     		{data:'penyelia'},
@@ -63,10 +73,38 @@
     		{data:'denom'},
     		{data:'jumlah'},
     		{data:'no_seri'},
-    		{data:'total'}
-    	]
+    		{data:'total'},
+            {data:'aksi'},
+    	],
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select class="form-control"><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
+        language:{
+            "search":"Goleti Data",
+            "zeroRecords":"Ora ana data sing pada karo sing koen maksud",
+            "lengthMenu":"Munculna _MENU_ data",
+            "info":"Munculna sing _START_ kosi _END_ sing _TOTAL_ data",
+            "infoFiltered":"(disaring sing _TOTAL_ kabehe data)",
+            "infoEmpty":"Munculna sing 0 kosi 0 sing 0 data"
+        }
     });
-    
   });
 </script>
 @endsection
