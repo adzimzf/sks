@@ -48,6 +48,12 @@
     <!-- DataTables -->
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
+    <script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
     <!--autonumeric-->
     <script src="{{asset('plugins/autonumeric/autoNumeric.js')}}"> </script>
     <!-- SlimScroll 1.3.0 -->
@@ -58,6 +64,11 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        td{
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
     <!--warapper-->

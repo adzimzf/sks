@@ -3,57 +3,98 @@
 <div class="box-body">
 <table id="laporan_temuan" class="table table-hover table-bordered">
 	<thead>
-		<td style="width:5%;">No</td>
-		<td style="width:8%;">No BA</td>
-		<td style="width:10%;">Tanggal ditemukan</td>
-		<td style="width:10%;">Penyelia</td>
-		<td style="width:10%;">Manager</td>
-		<td style="width:10%;">Operator</td>
-		<td style="width:10%;">Saksi</td>
-		<td style="width:5%;">Cabang</td>
-		<td style="width:10%;">Teler</td>
-		<td style="width:5%;">Jam</td>
-		<td style="width:13%;">Tanggal Ban-banan</td>
-		<td style="width:15%;">Temuan</td>
-		<td style="width:15%;">Denom</td>
-		<td style="width:15%;">Jumlah</td>
-		<td style="width:10%;">No Seri</td>
-		<td style="width:10%;">Total</td>
-        <td style="width:13%;">AKSI</td>
+		<td style="">No</td>
+		<td style="">No BA</td>
+		<td style=";">Tanggal ditemukan</td>
+		<td style=";">Penyelia</td>
+		<td style=";">Manager</td>
+		<td style=";">Operator</td>
+		<td style=";">Saksi</td>
+		<td style="">Cabang</td>
+		<td style=";">Teler</td>
+		<td style="">Jam</td>
+		<td style=";">Tanggal Ban-banan</td>
+		<td style=";">Temuan</td>
+		<td style=";">Denom</td>
+		<td style=";">Jumlah</td>
+		<td style=";">No Seri</td>
+		<td style=";">Total</td>
+        <td style=";">AKSI</td>
 	</thead>
     <tfoot>
-        <td style="width:5%;">No</td>
-        <td style="width:8%;">No BA</td>
-        <td style="width:10%;">Tanggal ditemukan</td>
-        <td style="width:10%;">Penyelia</td>
-        <td style="width:10%;">Manager</td>
-        <td style="width:10%;">Operator</td>
-        <td style="width:10%;">Saksi</td>
-        <td style="width:5%;">Cabang</td>
-        <td style="width:10%;">Teler</td>
-        <td style="width:5%;">Jam</td>
-        <td style="width:13%;">Tanggal Ban-banan</td>
-        <td style="width:15%;">Temuan</td>
-        <td style="width:15%;">Denom</td>
-        <td style="width:15%;">Jumlah</td>
-        <td style="width:10%;">No Seri</td>
-        <td style="width:10%;">Total</td>
-        <td style="width:13%;">AKSI</td>
+        <td style="">No</td>
+        <td style="">No BA</td>
+        <td style=";">Tanggal ditemukan</td>
+        <td style=";">Penyelia</td>
+        <td style=";">Manager</td>
+        <td style=";">Operator</td>
+        <td style=";">Saksi</td>
+        <td style="">Cabang</td>
+        <td style=";">Teler</td>
+        <td style="">Jam</td>
+        <td style=";">Tanggal Ban-banan</td>
+        <td style=";">Temuan</td>
+        <td style=";">Denom</td>
+        <td style=";">Jumlah</td>
+        <td style=";">No Seri</td>
+        <td style=";">Total</td>
+        <td >AKSI</td>
     </tfoot>
 	<tbody>
 		
 	</tbody>
     
 </table>	
+<button id="print">PRINT</button>
 </div>
 
 <script type="text/javascript">
 	$(function () {
     $("#laporan_temuan").DataTable({
-        "aLengthMenu":[[5,15,30,-1],[5,15,30,"All"]],
+        //"aLengthMenu":[[5,15,30,-1],[5,15,30,"All"]],
         "pageLength":5,
-        "ordered":false,
+        "columnDefs": [
+            { "width": "6.5%", "targets": 0 },
+            { "width": "10%", "targets": 1 },
+            { "width": "10.5%", "targets": 2 },
+            { "width": "11.8%", "targets": 3 },
+            { "width": "12%", "targets": 4 },
+            { "width": "13.8%", "targets": 5 },
+            { "width": "13.8%", "targets": 6 },
+            { "width": "15%", "targets": 8 },
+            { "width": "15%", "targets": 16 },
+          ],
+        "lengthChange": false,
+        //button-button untuk export ke cetak, excel, dan pdf
+        dom :'Bfrtip',
+        buttons:[
+                {
+                    extend: 'print',
+                    className: 'btn btn-default',
+                    text: 'PRINT',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                },
+                {
+                    extend:'excelHtml5',
+                    className: 'btn btn-success',
+                    text: 'EXCEL'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-danger',
+                    text: 'PDF',
+                    orientation: 'landscape',
+                    pageSize: 'A4'
+                }
+            
+        ],
+        "ordering":false,
         scrollX:true,
+        
     	ajax:{
     		url: "{{url('laporantemuanajax')}}",
     		dataSrc:''
@@ -105,6 +146,20 @@
             "infoEmpty":"Munculna sing 0 kosi 0 sing 0 data"
         }
     });
+    /**$("#print").click(function(){
+
+  var divToPrint=document.getElementsById("tbody");
+
+  var newWin=window.open();
+
+  newWin.document.open();
+
+  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+  newWin.document.close();
+
+  setTimeout(function(){newWin.close();},10);
+    });**/
   });
 </script>
 @endsection

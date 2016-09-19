@@ -20,9 +20,11 @@ operator :{{$operator}}
 <script type="text/javascript">
 	
 	function cetak(){
-
-		direct();
-		window.print();
+		
+		setTimeout(function(){
+			window.print();
+		},10);
+		
 	}
 	function direct(){
 		window.location ="tulisba";
