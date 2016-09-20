@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('container')
+<!--box default-->
+<div class="box box-default">
 <div class="box-body">
 <table id="laporan_temuan" class="table table-hover table-bordered">
 	<thead>
@@ -45,16 +47,16 @@
 	</tbody>
     
 </table>	
-<button id="print">PRINT</button>
 </div>
-
+</div>
 <script type="text/javascript">
 	$(function () {
+
     $("#laporan_temuan").DataTable({
         //"aLengthMenu":[[5,15,30,-1],[5,15,30,"All"]],
         "pageLength":5,
         "columnDefs": [
-            { "width": "6.5%", "targets": 0 },
+            { "width": "4%", "targets": 0 },
             { "width": "10%", "targets": 1 },
             { "width": "10.5%", "targets": 2 },
             { "width": "11.8%", "targets": 3 },
@@ -62,6 +64,8 @@
             { "width": "13.8%", "targets": 5 },
             { "width": "13.8%", "targets": 6 },
             { "width": "15%", "targets": 8 },
+            { "width": "20%", "targets": 10 },
+            { "width": "25%", "targets": 14 },
             { "width": "15%", "targets": 16 },
           ],
         "lengthChange": false,
@@ -70,29 +74,16 @@
         buttons:[
                 {
                     extend: 'print',
-                    className: 'btn btn-default',
-                    text: 'PRINT',
-                    exportOptions: {
-                        modifier: {
-                            page: 'current'
-                        }
-                    }
+                    className: 'btn btn-default'
                 },
                 {
                     extend:'excelHtml5',
                     className: 'btn btn-success',
                     text: 'EXCEL'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    className: 'btn btn-danger',
-                    text: 'PDF',
-                    orientation: 'landscape',
-                    pageSize: 'A4'
                 }
             
         ],
-        "ordering":false,
+        "ordering":true,
         scrollX:true,
         
     	ajax:{

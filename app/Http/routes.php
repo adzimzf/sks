@@ -54,6 +54,9 @@ Route::post('cetakPDF', 'TulisBaController@cetakPDF');
 
 Route::get('laporantemuan', 'LaporanTemuanController@index');
 Route::get('laporantemuanajax', 'LaporanTemuanController@ajax');
+
+Route::get('laporan_uang_masuk', 'LaporanUangMasukController@index');
+
 Route::get('datatables', function(){
     return view('laporan_temuan.contoh');
 });

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('container')
+<!--box default-->
+<div class="box box-default">
 <!--box header-->
 <div class="box-header with-border">
   <h3 class="box-title">Data-data BA Cabang</h3>
@@ -24,6 +26,7 @@
   </form>
   
 </div><!--/box body-->
+</div>
 <!--scrpit for element-->
 <script type="text/javascript">
   $(function () {

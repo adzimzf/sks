@@ -66,7 +66,7 @@
     <![endif]-->
     <style type="text/css">
         td{
-            word-wrap: break-word;
+            word-wrap: normal;
         }
     </style>
 </head>
@@ -107,18 +107,18 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header"><center style="font-size:24px; padding:15px 0 15px 0;">MENU UTAMA</center></li>
-                    <li class="active treetview">
+                    <li class="reetview">
                         <a href="{{url('tulisba')}}">
                             <i class="fa fa-edit"></i><span>Tulis BA</span>
                         </a>
                     </li>
                     <li class="treeview">
-                <a href="#">
+                    <a href="{{url('laporan_uang_masuk')}}">
                   <i class="fa fa-expand"></i><span>Uang Msuk/Keluar</span>
                 </a>
               </li>
               <li class="treeview">
-                <a href="#">
+                <a href="#laporansortir">
                   <i class="fa fa-file"></i><span>Laporan Sortir</span>
                 </a>
               </li>
@@ -128,7 +128,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="#">
+                <a href="#Daftarpegawai">
                   <i class="fa fa-list"></i><span>Daftar Pegawai</span>
                 </a>
               </li>
@@ -139,8 +139,6 @@
         <div class="content-wrapper">
             <!--box content-->
             <section class="content">
-                <!--box default-->
-                <div class="box box-default">
                     @if(Session::has('informasi'))
                     <div class="alert alert-info">
                     <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
