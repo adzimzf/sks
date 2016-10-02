@@ -32,8 +32,8 @@
       </select>
     </div><!-- /input-group -->
     <label>Jam:</label>
-    <div class="input-group bootstrap-timepicker timepicker">
-      <input type="text" name="jam" id="timepicker" value="{{$data->jam}}" class="form-control">
+    <div class="input-group ">
+      <input type="text" name="jam" id="jam" value="{{$data->jam}}" class="form-control" data-mask>
       <div class="input-group-addon">
         <span class="glyphicon glyphicon-time"></span>
       </div>
@@ -59,28 +59,28 @@
         <span class="glyphicon glyphicon-calendar"></span>
       </div>
     </div><!-- /.input group -->
-    <label>Manager</label>                          
+    <label>Manager</label>
       <select class="select2" name="manager" style="width: 100%;">
         <option value="{{$data->manajer}}" selected="">{{$data->manajer}}</option>
         @foreach($manajer as $manajer)
           <option value="{{$manajer->nama}}">{{$manajer->nama}}</option>
         @endforeach
-      </select>                                
+      </select>
     <!-- /input-group dan label nya -->
-    <label>Saksi</label>   
+    <label>Saksi</label>
     <select class="select2" name="saksi" style="width: 100%;">
       <option value="{{$data->saksi}}" selected="" >{{$data->saksi}}</option>
       @foreach($saksi as $saksi)
           <option value="{{$saksi->nama}}">{{$saksi->nama}}</option>
-      @endforeach  
-    </select>                     
+      @endforeach
+    </select>
     <!-- /input-group dan label nya -->
-    <label>Teller</label>   
+    <label>Teller</label>
     <select style="width: 100%;" name="teler[]" required="" class="select2" multiple="multiple" data-placeholder="Pilih Teler" >
       @foreach($teler as $teler)
-          <option value="{{$teler->id}}">{{$teler->nama}}</option>
+          <option value="{{$teler->id}}">{{$teler->nama}}/{{$teler->npp}}</option>
         @endforeach
-    </select>               
+    </select>
     <!-- /input-group dan label nya -->
     <label>Tanggal Ban-banan:</label>
     <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
@@ -99,7 +99,7 @@
       <option value="2000">2.000,00</option>
       <option value="1000">1.000,00</option>
     </select>
-    <p id="tes">p</p>
+    <p id="tes">P :{{ (Request::is('lapran') ? 'class=active' : '')}}</p>
   </div><!--kolom kedua-->
 </div><!--row-->
 <!--div untuk menangani temuan kurang, lebih, palsu, mutilasi-->
@@ -114,9 +114,10 @@
   </div>
   <div class="col-md-4">
     <label>No seri:</label>
-    <input type="text" name="no_seri" class="form-control" required="" id="nomer-seri" placeholder="No Seri">
+    <input type="text" name="no_seri" required="" id="nomer-seri" class="form-control"  data-mask >
+
   </div>
-</div>  
+</div>
 
 <!--div untuk menangani beda denom-->
 <div class="row" id="div-temuan-bedadenom" style="display:none;">
@@ -142,7 +143,7 @@
       </div>
       <div class="col-md-6">
         <label>Nomer Seri:</label>
-      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda"> 
+      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda">
       </div>
     </div>
     <div class="row" id="denom-beda-2" style="display:none;">
@@ -160,7 +161,7 @@
       </div>
       <div class="col-md-6">
         <label>Nomer Seri:</label>
-      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda"> 
+      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda">
       </div>
     </div>
     <div class="row" id="denom-beda-3"  style="display:none;">
@@ -178,7 +179,7 @@
       </div>
       <div class="col-md-6">
         <label>Nomer Seri:</label>
-      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda"> 
+      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda">
       </div>
     </div>
     <div class="row" id="denom-beda-4" style="display:none;">
@@ -196,7 +197,7 @@
       </div>
       <div class="col-md-6">
         <label>Nomer Seri:</label>
-      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda"> 
+      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda">
       </div>
     </div>
     <div class="row" id="denom-beda-5" style="display:none;">
@@ -214,8 +215,8 @@
       </div>
       <div class="col-md-6">
         <label>Nomer Seri:</label>
-      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda"> 
+      <input type="text" class="form-control" placeholder="Nomer Seri Denom Beda">
       </div>
     </div>
   </div>
-</div>              
+</div>

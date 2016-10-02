@@ -1,15 +1,16 @@
 @extends('layouts.master')
 @section('container')
+@include('tulis_ba.modal')
 <!--box default-->
 <div class="box box-default">
 <!--box header-->
 <div class="box-header with-border">
   <h3 class="box-title">Data-data BA Cabang</h3>
-  <button class="btn btn-success pull-right"><i class="fa fa-plus"></i>   Teler</button>
+  <button class="btn btn-success pull-right"  data-toggle="modal" href='#modal-id'><i class="fa fa-plus"></i>   Teler</button>
 </div><!--/box header-->
-<!--box body--> 
+<!--box body-->
 <div class="box-body">
-  <!--bikin form--> 
+  <!--bikin form-->
   <form action="cetak" method="post">
     @include('tulis_ba.form')
     <div class="row">
@@ -24,20 +25,23 @@
       </div><!--/kolom-->
     </div><!--/row untuk button-->
   </form>
-  
+
 </div><!--/box body-->
 </div>
 <!--scrpit for element-->
 <script type="text/javascript">
   $(function () {
-      $("#total-temuan").autoNumeric('init');
+    $("#total-temuan").autoNumeric('init');
+    $("#jam").inputmask("99:99");
     $("#temuan").change(function(){
       var tes = $(this).val();
       if(tes=='lebih' || tes=='kurang' || tes=='palsu' || tes=='mutilasi'){
         if (tes=='mutilasi') {
-          $("#nomer-seri").attr('placeholder', 'Nomer seri 1/Nomer seri 2');
+          $("#nomer-seri").inputmask("aaa-999-999 / aaa-999-999");
+          $("#nomer-seri").attr('placeholder', 'abc-123-456 / abc-123-456');
         }else{
-          $("#nomer-seri").attr('placeholder', 'Nomer Seri');
+          $("#nomer-seri").inputmask("aaa-999-999");
+          $("#nomer-seri").attr('placeholder', 'abc-123-456');
         }
         $("#tes").text(tes+" muncul div");
         $("#div-temuan-bedadenom").hide();
@@ -47,7 +51,7 @@
         $("#div-temuan").hide();
         $("#div-temuan-bedadenom").show();
       }
-      
+
     });
     $("#jumlah-beda-denom").keyup(function(){
       var jumlah = $(this).val();
@@ -99,9 +103,10 @@
     });
     $("#div-temuan-bedadenom").keyup(function(){
       var jumlah = $(this).val();
-      
-    });
 
+    });
+    //input mask
+    $("[data-mask]").inputmask();
     //Number formating
     //cara menggunakan angka.format(2)
     Number.prototype.format = function(n, x) {
@@ -123,8 +128,6 @@
   });
   //Initialize timepicker Elements
   $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-  
-  
-  
+
 </script>
 @endsection

@@ -18,17 +18,9 @@ manager :{{$manager}}
 operator :{{$operator}}
 </body>
 <script type="text/javascript">
-	
-	function cetak(){
-		
-		setTimeout(function(){
-			window.print();
-		},10);
-		
-	}
-	function direct(){
-		window.location ="tulisba";
-	}
-	
+ function cetak(){
+ 	window.setTimeout(cetak, 3000);
+ 	window.open({{url('tulisba')}});
+ }
 </script>
 </html>

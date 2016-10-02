@@ -27,7 +27,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
-    
+
 
 
     <!--Javascript import-->
@@ -35,6 +35,10 @@
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
     <script src="{{asset('plugins/fastclick/fastclick.min.js')}}"></script>
+    <!-- InputMask -->
+    <script src="{{asset('plugins/input-mask/jquery.inputmask.js')}}"></script>
+    <script src="{{asset('plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
+    <script src="{{asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('dist/js/app.min.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
@@ -107,28 +111,29 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header"><center style="font-size:24px; padding:15px 0 15px 0;">MENU UTAMA</center></li>
-                    <li class="reetview">
+                    <li class="{{(Request::is('tulisba') ? 'active' : '')}} treetview">
+
                         <a href="{{url('tulisba')}}">
                             <i class="fa fa-edit"></i><span>Tulis BA</span>
                         </a>
                     </li>
-                    <li class="treeview">
+                    <li class="{{(Request::is('laporan_uang_masuk') ? 'active' : '')}} treeview">
                     <a href="{{url('laporan_uang_masuk')}}">
                   <i class="fa fa-expand"></i><span>Uang Msuk/Keluar</span>
                 </a>
               </li>
-              <li class="treeview">
-                <a href="#laporansortir">
+              <li class="{{(Request::is('laporansortir') ? 'active' : '')}} treetview">
+                <a href="laporansortir">
                   <i class="fa fa-file"></i><span>Laporan Sortir</span>
                 </a>
               </li>
-              <li class="treeview">
+              <li class="{{(Request::is('laporantemuan') ? 'active' : '')}} treetview">
                 <a href="{{url('laporantemuan')}}">
                   <i class="fa fa-folder-open"></i><span>Laporan Temuan</span>
                 </a>
               </li>
-              <li class="treeview">
-                <a href="#Daftarpegawai">
+              <li class="{{(Request::is('Daftarpegawai') ? 'active' : '')}} treetview">
+                <a href="Daftarpegawai">
                   <i class="fa fa-list"></i><span>Daftar Pegawai</span>
                 </a>
               </li>
@@ -146,14 +151,15 @@
                     </div>
                     @endif
                   <!-- digunakan untuk yang lain-->
+                  <p>{{ (Request::is('tulisba') ? 'active' : '')}} </p>
                   @yield('container')
             </section><!--box content-->
         </div><!--content wrapper-->
-        
+
     </div><!--/warapper-->
 
-    
-    
+
+
     <!-- Page script  on each page-->
 
 </body>

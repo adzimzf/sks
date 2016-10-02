@@ -1,13 +1,14 @@
 @extends('layouts.master')
 @section('container')
+@include('tulis_ba.modal')
 <!--box header-->
 <div class="box-header with-border">
   <h3 class="box-title">Data-data BA Cabang</h3>
-  <button class="btn btn-success pull-right"><i class="fa fa-plus"></i>   Teler</button>
+  <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a>
 </div><!--/box header-->
-<!--box body--> 
+<!--box body-->
 <div class="box-body">
-	<!--bikin form--> 
+	<!--bikin form-->
 	<form>
 		@include('tulis_ba.form')
 		<div class="row">
@@ -23,6 +24,7 @@
     </div><!--/row untuk button-->
 	</form>
 </div><!--/box body-->
+
 <!--scrpit for element-->
 <script type="text/javascript">
 	//Initialize Select2 Elements

@@ -5,7 +5,9 @@
 		<div class="box box-solid">
            <div class="box-header">
              <h3 class="box-title text-blue">Uang Masuk</h3>
-
+             <div class="row">
+             	bs3-men
+             </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body text-center">
@@ -22,12 +24,13 @@
        <div class="box box-solid">
            <div class="box-header">
              <h3 class="box-title text-blue">Uang Keluar</h3>
-
+<input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+<button type="button" class="btn btn-default">Bukan Button</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body text-center">
                <form action="isiUangKeluar" method="post">
-            	@include('laporan_uang_masuk.form_keluar')
+            	@include('laporan_uang_masuk.form')
             	</form>
             <!-- /.box-body -->
           </div>
@@ -41,24 +44,37 @@
 			<div class="box-header">
 				<label>Data Uang Masuk dan Keluar</label>
 			</div>
-			<div class="box" style="width:49%; display:inline-block;">
-			@include('laporan_uang_masuk.tabel_masuk')
-			<!-- /.box -->
-			</div>
-			<div class="box" style="width:49%; display:inline-block; float:right;">
-				@include('laporan_uang_masuk.tabel_keluar')
+			<div class="">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Jam</th>
+							<th>Denom</th>
+							<th>Jumlah</th>
+							<th>Aksi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>12:30</td>
+							<td>100.000</td>
+							<td>3.000.000</td>
+							<td>delete edit</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">Total :</td>
+							<td>12929929</td>
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 		</div>
 	</div>
 </div>
+<p class="thex" id="text"></p>
 <script type="text/javascript">
-//membuat tanggal
-	var d = new Date();
-	var years = d.getFullYear();
-	var month = d.getMonth()+1;
-  	var date = d.getDate();
-  	var tgl = years+"-"+addNoll(month)+"-"+addNoll(date);
-  	$("#datepicker, #datepicker2").val(tgl);
 //Initialize Select2 Elements
   $(".select2").select2();
 	//Timepicker
@@ -70,17 +86,8 @@
     showMeridian: false,
     defaultTime: true
   });
-  //membuat fungsi
-  function addNoll(st) {
-  	if (st <= 9) {
-  		return "0"+st;
-  	}else{
-  		return st;
-  	}
-  }
-</script>
-<script type="text/javascript" charset="utf-8" async defer>
-
-
+  $("#butt").click(function(event) {
+  	this.append('Some text')
+  });
 </script>
 @stop
