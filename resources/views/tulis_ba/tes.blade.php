@@ -128,6 +128,26 @@
       var jumlah = $(this).val();
 
     });
+    //aambil data api teler berdasarkan change di cabang
+    $("#cabang").change(function(event) {
+      console.log($(this).val());
+      var id = "/cabang/"+$(this).val();
+      console.log(id);
+      $.ajax ({
+        type: "GET",
+        url: 'ambilDataTelerApi'+id,//nanti +this val
+        dataType: "json",
+        success: function(results) {
+            var data = '';
+            $.each(results, function(k, v){
+                data += "<option>"+v.nama+"</option>";
+           });
+           $("#teler").html(data);
+
+        }
+    });
+    });
+
     //input mask
     $("[data-mask]").inputmask();
     $("#nomer-seri").inputmask("aaa-999-999");

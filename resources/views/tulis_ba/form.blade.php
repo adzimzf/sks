@@ -25,7 +25,7 @@
     </div><!-- /input-group -->
     <label>Cabang</label>
     <div class="input-group" style="width:100%;">
-      <select class="select2" name="cabang" style="width: 100%;">
+      <select class="select2" name="cabang" id="cabang" style="width: 100%;">
         @foreach($cabang as $cabang)
           <option value="{{$cabang->id}}">{{$cabang->nama}}</option>
         @endforeach
@@ -74,12 +74,9 @@
           <option value="{{$saksi->nama}}">{{$saksi->nama}}</option>
       @endforeach
     </select>
-    <!-- /input-group dan label nya -->
+    <!-- /input-group dan label nya data diisi dari API -->
     <label>Teller</label>
     <select id="teler" style="width: 100%;" name="teler[]" required="" class="select2" multiple="multiple" data-placeholder="Pilih Teler" >
-      @foreach($teler as $teler)
-          <option value="{{$teler->id}}">{{$teler->nama}}/{{$teler->npp}}</option>
-        @endforeach
     </select>
     <!-- /input-group dan label nya -->
     <label>Tanggal Ban-banan:</label>

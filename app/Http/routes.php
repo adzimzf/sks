@@ -51,7 +51,7 @@ Route::get('tulisba', 'TulisBaController@index');
 Route::post('cetak', 'TulisBaController@cetak');
 Route::post('cetakPDF', 'TulisBaController@cetakPDF');
 Route::post('tambah_teler', 'TulisBaController@tambah_teler');
-Route::get('ambilDataTelerApi', 'TulisBaController@ambilDataTelerApi');
+Route::get('ambilDataTelerApi/cabang/{id?}', 'TulisBaController@ambilDataTelerApi');
 
 Route::get('laporantemuan', 'LaporanTemuanController@index');
 Route::get('laporantemuanajax', 'LaporanTemuanController@ajax');

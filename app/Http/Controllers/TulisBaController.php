@@ -120,16 +120,16 @@ class TulisBaController extends Controller {
 		$data->save();
 		return redirect('tulisba');
 	}
-	public function ambilDataTelerApi() {
-		$teler = teler::all();
+	public function ambilDataTelerApi($id) {
+		$teler = teler::where('cabang', '=', $id)->get();
 		$nomer = 1;
 		$json = "";
 		foreach ($teler as $teler) {
 			$json = $json .
-				"{
-                id: $nomer,
-                text: '$teler->nama'
-            },"
+			'{
+                "id": "' . $teler->id . '",
+                "nama": "' . $teler->nama . '/' . $teler->npp . '"
+            },'
 			;
 			$nomer++;
 		}
