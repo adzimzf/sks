@@ -23,6 +23,6 @@
 		<option value="1000">1.000,00</option>
 </select>
 <label>Jumlah</label>
-<input type="number" name="jumlah_keluar" class="form-control" required="">
+<input type="number" name="jumlah_keluar" class="form-control" required="" value="">
 <br>
 <button type="submit" class="btn btn-default btn-block btn-flat">Input</button>

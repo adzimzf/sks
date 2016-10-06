@@ -1,10 +1,11 @@
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"></input>
 <div class="input-group date" data-date-format="yyyy-mm-dd" data-provide="datepicker">
   <input type="text" name="tanggal" value="" class="form-control datepicker" id="datepicker">
   <div class="input-group-addon">
     <span class="glyphicon glyphicon-calendar"></span>
   </div>
 </div><!-- /.input group -->
-<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"></input>
+
 <label>Jam</label>
   <div class="input-group bootstrap-timepicker timepicker">
 		<input type="text" name="jam" id="timepicker1" value="" class="form-control" required="">

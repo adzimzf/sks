@@ -57,7 +57,14 @@ Route::get('laporantemuan', 'LaporanTemuanController@index');
 Route::get('laporantemuanajax', 'LaporanTemuanController@ajax');
 
 Route::get('laporan_uang_masuk', 'LaporanUangMasukController@index');
+Route::get('laporantemuan/edit/id/{id?}/masuk', 'LaporanUangMasukController@editUangMasuk');
+Route::get('laporantemuan/edit/id/{id?}/keluar', 'LaporanUangMasukController@editUangKeluar');
 
+Route::post('laporantemuan/edit/id/{id?}/simpanMasuk', 'LaporanUangMasukController@editSimpanMasuk');
+Route::post('laporantemuan/edit/id/{id?}/simpanKeluar', 'LaporanUangMasukController@editSimpanKeluar');
+
+Route::get('laporantemuan/hapus/id/{id?}/masuk', 'LaporanUangMasukController@hapusMasuk');
+Route::get('laporantemuan/hapus/id/{id?}/keluar', 'LaporanUangMasukController@hapusKeluar');
 Route::get('datatables', function () {
 	return view('laporan_temuan.contoh');
 });

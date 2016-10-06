@@ -76,7 +76,7 @@
     </select>
     <!-- /input-group dan label nya -->
     <label>Teller</label>
-    <select style="width: 100%;" name="teler[]" required="" class="select2" multiple="multiple" data-placeholder="Pilih Teler" >
+    <select id="teler" style="width: 100%;" name="teler[]" required="" class="select2" multiple="multiple" data-placeholder="Pilih Teler" >
       @foreach($teler as $teler)
           <option value="{{$teler->id}}">{{$teler->nama}}/{{$teler->npp}}</option>
         @endforeach
@@ -106,7 +106,7 @@
 <div class="row" id="div-temuan">
   <div class="col-md-4">
     <label>Jumlah:</label>
-    <input type="text" name="jumlah" id="jumlah-temuan" required="" class="form-control" placeholder="Jumlah lembar">
+    <input type="text" name="jumlah" id="jumlah-temuan" required="" class="form-control" placeholder="Jumlah lembar" value="">
   </div>
   <div class="col-md-4">
     <label>Total:</label>
@@ -114,7 +114,7 @@
   </div>
   <div class="col-md-4">
     <label>No seri:</label>
-    <input type="text" name="no_seri" required="" id="nomer-seri" class="form-control"  data-mask >
+    <input type="text" name="no_seri" required="" id="nomer-seri" class="form-control"  data-mask value="">
 
   </div>
 </div>

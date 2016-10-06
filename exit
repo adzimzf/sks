@@ -1,0 +1,71 @@
+[33mcommit 9fe2836dbb5768753ab3ce7b4bcfbb3375f1301d[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Sun Oct 2 12:17:16 2016 +0700
+
+    aksi di laporan uang masuk, tulis ba teler menggunakan ajax
+
+[33mcommit aa9e400319378cab80f02a279de1fcfb8a10d5c0[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Tue Sep 20 20:53:37 2016 +0700
+
+    menambahkan laporan uang masuk/keluar meski belum kelar, sedikit mengedit laporan temuan
+
+[33mcommit 7386beced274ef79e53319f32df885f7f8be029f[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Tue Sep 20 06:38:38 2016 +0700
+
+    menambahkan button untuk print, excel, dan pdf, kekurangan 1. masalah di hasil print yang selalu terpotong, 2. hasil pdf belum bisa rapih
+
+[33mcommit f0ae7454eaf8a11eb7a8dad6e6ecde545b276d09[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Mon Sep 19 06:48:05 2016 +0700
+
+    nambahin tag input dan table
+
+[33mcommit a564246ff6094298e1b4a71fa0bcfddb397a8927[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Mon Sep 19 06:45:29 2016 +0700
+
+    nambahin tag html
+
+[33mcommit 7efe0033d5082e3d7bd4f11d1ac3c523be13580f[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Mon Sep 19 06:32:51 2016 +0700
+
+    menambahakan editajax
+
+[33mcommit 9e6d2dbdf0a39e3b9023964c766a03f70a7e6a55[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gamil.com>
+Date:   Mon Sep 19 06:24:58 2016 +0700
+
+    commit ke
+
+[33mcommit 57eecd4bf3ce17bfd3b386ecd5550797b4c2251c[m
+Author: adzim zul fahmi <adzimzulfahmy@gamil.com>
+Date:   Sun Sep 18 11:53:06 2016 +0700
+
+    cuman nambahin komentar
+
+[33mcommit 66fd7d43e429ccc9e2f558b1ea4903800505233e[m
+Author: adzim zul fahmi <adzimzulfahmy@gamil.com>
+Date:   Fri Sep 16 04:39:37 2016 +0700
+
+    emang sengaja dirubah
+
+[33mcommit cafca720e1eb34c8fe5376e12c3a3aeef80499fa[m
+Author: adzim zul fahmi <adzimzulfahmy@gamil.com>
+Date:   Fri Sep 16 04:35:30 2016 +0700
+
+    coba-coba
+
+[33mcommit 9bf114e3d01e96117241fda1e1971077e99ba191[m
+Author: adzim zul fahmi <adzimzulfahmy@gamil.com>
+Date:   Fri Sep 16 04:15:01 2016 +0700
+
+    pertama diupload ke git
+
+[33mcommit 73b25bec637e1683cdc2d37bde5cb55a0878136d[m
+Author: Adzim Zul Fahmi <adzimzulfahmy@gmail.com>
+Date:   Fri Sep 16 04:19:59 2016 +0700
+
+    Initial commit

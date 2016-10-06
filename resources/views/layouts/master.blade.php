@@ -150,6 +150,15 @@
                         <strong>INFO :</strong>{{Session::get('informasi')}}
                     </div>
                     @endif
+
+                    <!--alert untuk danger-->
+                    @if(Session::has('gagal'))
+                    <div class="alert alert-danger">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>INFO :</strong>{{Session::get('gagal')}}
+                    </div>
+                    @endif
+
                   <!-- digunakan untuk yang lain-->
                   <p>{{ (Request::is('tulisba') ? 'active' : '')}} </p>
                   @yield('container')

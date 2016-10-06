@@ -29,6 +29,7 @@ class LaporanUangMasukController extends Controller {
 		return Redirect('laporan_uang_masuk');
 	}
 	public function isiTabelUangMasukAjax() {
+		date_default_timezone_set('Asia/Jakarta');
 		$tgl = date("Y-m-d");
 		$data = uangMasuk::where('tanggal', '=', $tgl)->get();
 		$nomer = 1;
@@ -39,7 +40,7 @@ class LaporanUangMasukController extends Controller {
     			"jam":"' . $data->jam . '",
     			"denom":"' . $data->denom . '",
     			"jumlah":"' . $data->jumlah . '",
-    			"aksi":"<a href=laporantemuan/edit/id/' . $data->id . ' style=\"color:orange;\">edit</a>  <a href=laporantemuan/hapus/id/' . $data->id . ' style=\"color:red;\">hapus</a>"
+    			"aksi":"<a href=\"#laporantemuan/edit/id/' . $data->id . '\" class=\"masuk\" data-toggle=\"modal\" data-target=\"#modal_edit\" style=\"color:orange;\">edit</a>  <a href=\"laporantemuan/hapus/id/' . $data->id . '/masuk\"  style=\"color:red;\">hapus</a>"
     		},';
 			$nomer++;
 		}
@@ -50,6 +51,7 @@ class LaporanUangMasukController extends Controller {
 		//echo $data;
 	}
 	public function isiTabelUangKeluarAjax() {
+		date_default_timezone_set('Asia/Jakarta');
 		$tgl = date("Y-m-d");
 		$data = uangKeluar::where('tanggal', '=', $tgl)->get();
 		$nomer = 1;
@@ -60,14 +62,49 @@ class LaporanUangMasukController extends Controller {
     			"jam":"' . $data->jam . '",
     			"denom":"' . $data->denom . '",
     			"jumlah":"' . $data->jumlah . '",
-    			"aksi":"<a href=laporantemuan/edit/id/' . $data->id . ' style=\"color:orange;\">edit</a>  <a href=laporantemuan/hapus/id/' . $data->id . ' style=\"color:red;\">hapus</a>"
+    			"aksi":"<a href=\"#laporantemuan/edit/id/' . $data->id . '\" class=\"keluar\" data-toggle=\"modal\" data-target=\"#modal_edit\" style=\"color:orange;\">edit</a>  <a href=\"laporantemuan/hapus/id/' . $data->id . '/keluar\" style=\"color:red;\">hapus</a>"
     		},';
 			$nomer++;
 		}
 		//$json = rtrim($json, ",");
 		$json = "[" . rtrim($json, ",") . "]";
 		return ($json);
+		//echo date_default_timezone_get();
 		//echo $tgl;
+		//echo "$tanggal";
 		//echo $data;
+		//echo $json;
+	}
+	public function editUangMasuk($id) {
+		$data = uangMasuk::find($id);
+		return "[$data]";
+	}
+	public function editUangKeluar($id) {
+		$data = uangKeluar::find($id);
+		return "[$data]";
+	}
+	public function editSimpanMasuk(Request $input, $id) {
+		$tabel = uangMasuk::find($id);
+		$tabel->jam = $input->modalJam;
+		$tabel->denom = $input->modalDenom;
+		$tabel->jumlah = $input->modalJumlah;
+		$tabel->update();
+		return Redirect('laporan_uang_masuk');
+	}
+	public function editSimpanKeluar(Request $input, $id) {
+		$tabel = uangKeluar::find($id);
+		$tabel->jam = $input->modalJam;
+		$tabel->denom = $input->modalDenom;
+		$tabel->jumlah = $input->modalJumlah;
+		$tabel->update();
+		return Redirect('laporan_uang_masuk');
+	}
+	public function hapusMasuk($id) {
+		uangMasuk::where('id', '=', $id)->delete();
+		return Redirect('laporan_uang_masuk');
+	}
+	public function hapusKeluar($id) {
+		uangKeluar::where('id', '=', $id)->delete();
+		return Redirect('laporan_uang_masuk');
 	}
 }

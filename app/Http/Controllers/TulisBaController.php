@@ -48,9 +48,10 @@ class TulisBaController extends Controller {
 			$teler = $teler . "$te, ";
 		}
 		//define apakah akan di print atau di render ke pdf
-		$data = $input->btn;
+		$data = $input->printah;
+		echo "$data";
 		if ($data == "print") {
-			return view('tulis_ba.cetak')->with([
+			/*return view('tulis_ba.cetak')->with([
 				'tanggal_ditemukan' => $tanggal_ditemukan,
 				'penyelia' => $penyelia,
 				'manager' => $manager,
@@ -65,29 +66,47 @@ class TulisBaController extends Controller {
 				'jumlah' => $jumlah,
 				'no_seri' => $no_seri,
 				'total' => $total]);
-			/*//insert into DB
-				$temuan = new temuan;
-				$temuan->tanggal_ditemukan = $tanggal_ditemukan;
-				$temuan->penyelia = $penyelia;
-				$temuan->manajer = $manager;
-				$temuan->operator = $operator;
-				$temuan->saksi = $saksi;
-				$temuan->cabang = $cabang;
-				$temuan->teler = $teler;
-				$temuan->jam = $jam;
-				$temuan->denom = $denom;
-				$temuan->tanggal_banbanan = $tanggal_ban_banan;
-				$temuan->temuan = $ditemukan;
-				$temuan->jumlah = $jumlah;
-				$temuan->no_seri = $no_seri;
-				$temuan->total = $total;
-				$temuan->save();
-				if ($temuan->save()) {
-					//echo " succes menyimpan $tanggal_ditemukan $penyelia $manager $operator $saksi $cabang $teler $jam $denom $tanggal_ban_banan $operator $ditemukan $jumlah $no_seri $total ";
-					//create session informasi
-					$input->session()->put("informasi", "Data Berita Acara berhasil dicetak dan disimpan");
-					return view('tulis_ba.cetak')->with(['tanggal_ditemukan' => $tanggal_ditemukan, 'penyelia' => $penyelia, 'manager' => $manager, 'operator' => $operator, 'saksi' => $saksi, 'cabang' => $cabang, 'teler' => $teler, 'jam' => $jam, 'denom' => $denom, 'tanggal_ban_banan' => $tanggal_ban_banan, 'temuan' => $temuan, 'jumlah' => $jumlah, 'no_seri' => $no_seri, 'total' => $total]);
-			*/
+			/*///insert into DB
+			$temuan = new temuan;
+			$temuan->tanggal_ditemukan = $tanggal_ditemukan;
+			$temuan->penyelia = $penyelia;
+			$temuan->manajer = $manager;
+			$temuan->operator = $operator;
+			$temuan->saksi = $saksi;
+			$temuan->cabang = $cabang;
+			$temuan->teler = $teler;
+			$temuan->jam = $jam;
+			$temuan->denom = $denom;
+			$temuan->tanggal_banbanan = $tanggal_ban_banan;
+			$temuan->temuan = $ditemukan;
+			$temuan->jumlah = $jumlah;
+			$temuan->no_seri = $no_seri;
+			$temuan->total = $total;
+			$temuan->save();
+			if ($temuan->save()) {
+				//echo " succes menyimpan $tanggal_ditemukan $penyelia $manager $operator $saksi $cabang $teler $jam $denom $tanggal_ban_banan $operator $ditemukan $jumlah $no_seri $total ";
+				//create session informasi
+				$input->session()->put("informasi", "Data Berita Acara berhasil dicetak dan disimpan");
+				return view('tulis_ba.cetak')->with([
+					'tanggal_ditemukan' => $tanggal_ditemukan,
+					'penyelia' => $penyelia,
+					'manager' => $manager,
+					'operator' => $operator,
+					'saksi' => $saksi,
+					'cabang' => $cabang,
+					'teler' => $teler,
+					'jam' => $jam,
+					'denom' => $denom,
+					'tanggal_ban_banan' => $tanggal_ban_banan,
+					'temuan' => $temuan,
+					'jumlah' => $jumlah,
+					'no_seri' => $no_seri,
+					'total' => $total]);
+			} else {
+				$input->session()->put("Gagal", "Data Berita Acara tidak berhasil dicetak dan disimpan");
+				return redirect('tulisba');
+			}
+
 		} else {
 			echo "akan di render ke pdf";
 		}
@@ -99,6 +118,7 @@ class TulisBaController extends Controller {
 		$data->nama = $input->nama;
 		$data->npp = $input->npp;
 		$data->save();
+		return redirect('tulisba');
 	}
 	public function ambilDataTelerApi() {
 		$teler = teler::all();

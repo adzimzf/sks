@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('container')
 @include('tulis_ba.modal')
+@include('tulis_ba.modalPrint')
 <!--box default-->
 <div class="box box-default">
 <!--box header-->
@@ -11,19 +12,20 @@
 <!--box body-->
 <div class="box-body">
   <!--bikin form-->
-  <form action="cetak" method="post">
+  <form action="cetak" method="post" id="formBa">
     @include('tulis_ba.form')
     <div class="row">
       <!--kolom-->
       <div class="col-md-12" style="margin-top: 20px;">
         <div class="btn btn-group" style="width: 100%;">
         <center>
-          <button name="btn" type="submit" class="btn btn-danger" value="pdf" style="width: 49%;">PDF</button>
-          <button name="btn" type="submit" class="btn btn-primary" value="print" style="width: 49%">Cetak</button>
+          <button name="btn" type="btn" class="btn btn-danger" value="pdf" style="width: 49%;">PDF</button>
+          <button id="print" name="btn" type="button" class="btn btn-primary" value="print" style="width: 49%" data-toggle="modal" href='#modalKonfirmasiPrint'>Cetak</button>
         </center>
         </div>
       </div><!--/kolom-->
     </div><!--/row untuk button-->
+    <input type="hidden" name="printah" value="" id="printah">
   </form>
 
 </div><!--/box body-->
@@ -31,8 +33,29 @@
 <!--scrpit for element-->
 <script type="text/javascript">
   $(function () {
+    $("#print").click(function(event) {
+      $("#printah").val("print");
+      if($("#teler").val() == null){
+        $("#modalText").text("Oppss Teller belum diisi .!!!!");
+        $("#submit").hide();
+      }else if($("#jumlah-temuan").val() == ""){
+        $("#modalText").text("Oppss Jumlah Temuan belum diisi .!!!!");
+        $("#submit").hide();
+      }else if($("#nomer-seri").val() == ""){
+        $("#modalText").text("Oppss Nomer Seri wajib untuk di isi.!");
+        $("#submit").hide();
+      }else{
+        $("#modalText").text("Apakah Anda yakin akan mengeprint data.?");
+        $("#submit").show();
+      }
+    });
+    $("#pdf").click(function(event) {
+      $("#printah").val("pdf");
+    });
+    $("#submit").click(function(event) {
+      $("#formBa").submit();
+    });
     $("#total-temuan").autoNumeric('init');
-    $("#jam").inputmask("99:99");
     $("#temuan").change(function(){
       var tes = $(this).val();
       if(tes=='lebih' || tes=='kurang' || tes=='palsu' || tes=='mutilasi'){
@@ -107,6 +130,8 @@
     });
     //input mask
     $("[data-mask]").inputmask();
+    $("#nomer-seri").inputmask("aaa-999-999");
+    $("#jam").inputmask("99:99");
     //Number formating
     //cara menggunakan angka.format(2)
     Number.prototype.format = function(n, x) {

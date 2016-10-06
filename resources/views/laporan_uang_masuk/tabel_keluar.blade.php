@@ -8,8 +8,16 @@
 			<th>Aksi</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody class="tb">
 	</tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td><STRONG id="total" value=""></STRONG></td>
+      <td></td>
+    </tr>
+  </tfoot>
 </table>
 <script type="text/javascript">
 	$(function () {
