@@ -3,7 +3,7 @@
 <!--box default-->
 <div class="box box-default">
 <div class="box-body">
-<table id="laporan_temuan" class="table table-hover table-bordered">
+<table id="laporan_temuan" class="table table-hover table-bordered" style="width: ">
 	<thead>
 		<td style="">No</td>
 		<td style="">No BA</td>
@@ -43,10 +43,10 @@
         <td >AKSI</td>
     </tfoot>
 	<tbody>
-		
+
 	</tbody>
-    
-</table>	
+
+</table>
 </div>
 </div>
 <script type="text/javascript">
@@ -55,18 +55,9 @@
     $("#laporan_temuan").DataTable({
         //"aLengthMenu":[[5,15,30,-1],[5,15,30,"All"]],
         "pageLength":5,
+        "AutoWidth": false,
         "columnDefs": [
-            { "width": "4%", "targets": 0 },
-            { "width": "10%", "targets": 1 },
-            { "width": "10.5%", "targets": 2 },
-            { "width": "11.8%", "targets": 3 },
-            { "width": "12%", "targets": 4 },
-            { "width": "13.8%", "targets": 5 },
-            { "width": "13.8%", "targets": 6 },
-            { "width": "15%", "targets": 8 },
-            { "width": "20%", "targets": 10 },
-            { "width": "25%", "targets": 14 },
-            { "width": "15%", "targets": 16 },
+            { "width": "350px;", "targets": 10 }
           ],
         "lengthChange": false,
         //button-button untuk export ke cetak, excel, dan pdf
@@ -81,11 +72,11 @@
                     className: 'btn btn-success',
                     text: 'EXCEL'
                 }
-            
+
         ],
         "ordering":true,
         scrollX:true,
-        
+
     	ajax:{
     		url: "{{url('laporantemuanajax')}}",
     		dataSrc:''
@@ -117,12 +108,12 @@
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
                         );
- 
+
                         column
                             .search( val ? '^'+val+'$' : '', true, false )
                             .draw();
                     } );
- 
+
                 column.data().unique().sort().each( function ( d, j ) {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );

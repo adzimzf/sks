@@ -87,7 +87,8 @@
       </div>
     </div><!-- /.input group -->
     <label>Denom:</label>
-    <select id="denom" class="select2" name="denom" style="width: 100%;">
+    @include("laporanSortasi.denom")
+    {{-- <select id="denom" class="select2" name="denom" style="width: 100%;">
       <option value="100000">100.000,00</option>
       <option value="50000">50.000,00</option>
       <option value="20000">20.000,00</option>
@@ -95,7 +96,7 @@
       <option value="5000">5.000,00</option>
       <option value="2000">2.000,00</option>
       <option value="1000">1.000,00</option>
-    </select>
+    </select> --}}
     <p id="tes">P :{{ (Request::is('lapran') ? 'class=active' : '')}}</p>
   </div><!--kolom kedua-->
 </div><!--row-->

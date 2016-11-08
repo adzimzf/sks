@@ -27,6 +27,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
+    <!-- adzimzf.css -->
+    <link rel="stylesheet" href="{{asset('plugins/adzimzf/adzimzf.css')}}">
 
 
 
@@ -60,6 +62,8 @@
     <script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
     <!--autonumeric-->
     <script src="{{asset('plugins/autonumeric/autoNumeric.js')}}"> </script>
+    <!--  adzimzf -->
+    <script src="{{asset('plugins/adzimzf/adzimzf.js')}}"> </script>
     <!-- SlimScroll 1.3.0 -->
     <script src="{{asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -123,8 +127,8 @@
                 </a>
               </li>
               <li class="{{(Request::is('laporansortir') ? 'active' : '')}} treetview">
-                <a href="laporansortir">
-                  <i class="fa fa-file"></i><span>Laporan Sortir</span>
+                <a href="laporanSortasi">
+                  <i class="fa fa-file"></i><span>Laporan Sortasi</span>
                 </a>
               </li>
               <li class="{{(Request::is('laporantemuan') ? 'active' : '')}} treetview">
@@ -132,9 +136,9 @@
                   <i class="fa fa-folder-open"></i><span>Laporan Temuan</span>
                 </a>
               </li>
-              <li class="{{(Request::is('Daftarpegawai') ? 'active' : '')}} treetview">
-                <a href="Daftarpegawai">
-                  <i class="fa fa-list"></i><span>Daftar Pegawai</span>
+              <li class="{{(Request::is('dataPegawai') ? 'active' : '')}} treetview">
+                <a href="dataPegawai">
+                  <i class="fa fa-list"></i><span>Data Pegawai</span>
                 </a>
               </li>
               </ul>
@@ -162,6 +166,7 @@
                   <!-- digunakan untuk yang lain-->
                   <p>{{ (Request::is('tulisba') ? 'active' : '')}} </p>
                   @yield('container')
+                  @yield('js')
             </section><!--box content-->
         </div><!--content wrapper-->
 

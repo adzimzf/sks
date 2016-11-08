@@ -7,8 +7,8 @@
 				<h4 class="modal-title">Modal title</h4>
 			</div>
 			<div class="modal-body">
-				<div class="input-group date" data-date-format="yyyy-mm-dd" data-provide="datepicker">
-				  <input type="text" name="tanggal_keluar" value="" class="form-control datepicker" id="datepicker2">
+				<div class="input-group">
+				  <input type="text" name="tanggal_keluar" value="" class="form-control tanggal" data-date-format="yyyy-mm-dd" data-provide="datepicker">
 				  <div class="input-group-addon">
 				    <span class="glyphicon glyphicon-calendar"></span>
 				  </div>
@@ -32,7 +32,7 @@
 						<option value="1000">1.000,00</option>
 				</select>
 				<label>Jumlah</label>
-				<input type="number" id="modalJumlah" name="modalJumlah" class="form-control" required="">
+				<input type="text" id="modalJumlah" name="modalJumlah" class="form-control autoNumeric" required="" data-an-default="123.456">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

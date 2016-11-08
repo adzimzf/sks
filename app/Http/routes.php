@@ -69,7 +69,52 @@ Route::get('datatables', function () {
 	return view('laporan_temuan.contoh');
 });
 
+// Laoran Sortasi
+Route::get('laporanSortasi', 'LaporanSortasi@index');
+Route::post('laporanSortasi/simpan', 'LaporanSortasi@simpan');
+Route::get('laporanSortasi/isiDataAPI/{tanggal?}', 'LaporanSortasi@isiDataAPI');
+//laporan sortasi hapus
+Route::get('laporanSortasi/hapus/{id?}', 'LaporanSortasi@hapus');
+
 Route::post('isiUangMasuk', 'LaporanUangMasukController@isiUangMasuk');
 Route::post('isiUangKeluar', 'LaporanUangMasukController@isiUangKeluar');
-Route::get('isiTabelUangMasukAjax', 'LaporanUangMasukController@isiTabelUangMasukAjax');
-Route::get('isiTabelUangKeluarAjax', 'LaporanUangMasukController@isiTabelUangKeluarAjax');
+Route::get('laporan_uang_masuk/isiTabelUangMasukAjax', 'LaporanUangMasukController@isiTabelUangMasukAjax');
+Route::get('laporan_uang_masuk/isiTabelUangKeluarAjax', 'LaporanUangMasukController@isiTabelUangKeluarAjax');
+
+//route data pegawai
+Route::get('dataPegawai', 'DataPegawaiController@index');
+Route::post('simpanManager', 'DataPegawaiController@simpanManager');
+
+//edit data manager
+Route::get('dataPegawai/editManager/{id?}', 'DataPegawaiController@editManager');
+
+//update data manager
+Route::post('dataPegawai/editManager/{id?}/update', 'DataPegawaiController@updateManager');
+//hapus data manager
+Route::get('dataPegawai/hapusManager/{id?}', 'DataPegawaiController@hapusManager');
+
+//simpan data penyelia
+Route::post('simpanPenyelia', 'DataPegawaiController@simpanPenyelia');
+
+//edit data penyelia
+Route::get('dataPegawai/editPenyelia/{id?}', 'DataPegawaiController@editPenyelia');
+//update data penyelia
+Route::post('dataPegawai/editPenyelia/{id?}/update', 'DataPegawaiController@updatePenyelia');
+//hapus data manager
+Route::get('dataPegawai/hapusPenyelia/{id?}', 'DataPegawaiController@hapusPenyelia');
+
+//simpan data operator
+Route::post('simpanOperator', 'DataPegawaiController@simpanOperator');
+
+//edit data operator
+Route::get('dataPegawai/editOperator/{id?}', 'DataPegawaiController@editOperator');
+//update data operator
+Route::post('dataPegawai/editOperator/{id?}/update', 'DataPegawaiController@updateOperator');
+//hapus data manager
+Route::get('dataPegawai/hapusOperator/{id?}', 'DataPegawaiController@hapusOperator');
+//simpan data cabang
+Route::post('simpanCabang', 'DataPegawaiController@simpanCabang');
+//edit data cabang
+Route::get('dataPegawai/editCabang/{id?}', 'DataPegawaiController@editCabang');
+//update data cabang
+Route::post('dataPegawai/editCabang/{id?}/update', 'DataPegawaiController@updateCabang');

@@ -1,45 +1,61 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+<html lang="en">
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="utf-8">
+    <title>BNI-SKS</title>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+    <link rel="stylesheet" href="{{asset('login/css/animate.css')}}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{asset('login/css/style.css')}}">
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1 id="title" class="hidden"><span id="logo">Daily <span>UI</span></span></h1>
         </div>
-    </body>
+        <div class="login-box animated fadeInUp">
+            <div class="box-header">
+                <h2>Log In</h2>
+            </div>
+            <label for="username">Username</label>
+            <br/>
+            <input type="text" id="username">
+            <br/>
+            <label for="password">Password</label>
+            <br/>
+            <input type="password" id="password">
+            <br/>
+            <button type="submit">Sign In</button>
+            <br/>
+            <a href="#"><p class="small">Forgot your password?</p></a>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#logo').addClass('animated fadeInDown');
+        $("input:text:visible:first").focus();
+    });
+    $('#username').focus(function() {
+        $('label[for="username"]').addClass('selected');
+    });
+    $('#username').blur(function() {
+        $('label[for="username"]').removeClass('selected');
+    });
+    $('#password').focus(function() {
+        $('label[for="password"]').addClass('selected');
+    });
+    $('#password').blur(function() {
+        $('label[for="password"]').removeClass('selected');
+    });
+</script>
+
 </html>

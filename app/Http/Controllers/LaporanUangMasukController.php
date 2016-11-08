@@ -14,7 +14,7 @@ class LaporanUangMasukController extends Controller {
 		$tabel = new uangMasuk();
 		$tabel->jam = $input->jam;
 		$tabel->denom = $input->denom;
-		$tabel->jumlah = $input->jumlah;
+		$tabel->jumlah = str_replace(",", "", $input->jumlah);
 		$tabel->tanggal = $input->tanggal;
 		$tabel->save();
 		return Redirect('laporan_uang_masuk');
@@ -23,7 +23,7 @@ class LaporanUangMasukController extends Controller {
 		$tabel = new uangKeluar();
 		$tabel->jam = $input->jam_keluar;
 		$tabel->denom = $input->denom_keluar;
-		$tabel->jumlah = $input->jumlah_keluar;
+		$tabel->jumlah = str_replace(",", "", $input->jumlah_keluar);
 		$tabel->tanggal = $input->tanggal_keluar;
 		$tabel->save();
 		return Redirect('laporan_uang_masuk');
@@ -39,7 +39,7 @@ class LaporanUangMasukController extends Controller {
 			'{
     			"jam":"' . $data->jam . '",
     			"denom":"' . $data->denom . '",
-    			"jumlah":"' . $data->jumlah . '",
+    			"jumlah":"' . $this->numFor($data->jumlah) . '",
     			"aksi":"<a href=\"#laporantemuan/edit/id/' . $data->id . '\" class=\"masuk\" data-toggle=\"modal\" data-target=\"#modal_edit\" style=\"color:orange;\">edit</a>  <a href=\"laporantemuan/hapus/id/' . $data->id . '/masuk\"  style=\"color:red;\">hapus</a>"
     		},';
 			$nomer++;
@@ -61,7 +61,7 @@ class LaporanUangMasukController extends Controller {
 			'{
     			"jam":"' . $data->jam . '",
     			"denom":"' . $data->denom . '",
-    			"jumlah":"' . $data->jumlah . '",
+    			"jumlah":"' . $this->numFor($data->jumlah) . '",
     			"aksi":"<a href=\"#laporantemuan/edit/id/' . $data->id . '\" class=\"keluar\" data-toggle=\"modal\" data-target=\"#modal_edit\" style=\"color:orange;\">edit</a>  <a href=\"laporantemuan/hapus/id/' . $data->id . '/keluar\" style=\"color:red;\">hapus</a>"
     		},';
 			$nomer++;
@@ -75,6 +75,9 @@ class LaporanUangMasukController extends Controller {
 		//echo $data;
 		//echo $json;
 	}
+	public function numFor($string) {
+		return number_format(floatval($string), 2, ".", ",");
+	}
 	public function editUangMasuk($id) {
 		$data = uangMasuk::find($id);
 		return "[$data]";
@@ -87,7 +90,7 @@ class LaporanUangMasukController extends Controller {
 		$tabel = uangMasuk::find($id);
 		$tabel->jam = $input->modalJam;
 		$tabel->denom = $input->modalDenom;
-		$tabel->jumlah = $input->modalJumlah;
+		$tabel->jumlah = str_replace(",", "", $input->modalJumlah);
 		$tabel->update();
 		return Redirect('laporan_uang_masuk');
 	}
@@ -95,7 +98,7 @@ class LaporanUangMasukController extends Controller {
 		$tabel = uangKeluar::find($id);
 		$tabel->jam = $input->modalJam;
 		$tabel->denom = $input->modalDenom;
-		$tabel->jumlah = $input->modalJumlah;
+		$tabel->jumlah = str_replace(",", "", $input->modalJumlah);
 		$tabel->update();
 		return Redirect('laporan_uang_masuk');
 	}
