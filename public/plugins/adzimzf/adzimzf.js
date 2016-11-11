@@ -14,6 +14,18 @@ $(function () {
   
     //inputmask for jam
     $(".jamMask").inputmask("99:99");
+
+    //numpang buat caret login
+    $("#caret").click(function(event) {
+      var data = $("#caret-data").attr('data');
+      if (data == "hidden") {
+        $("#caret-data").removeClass('hide');
+        $("#caret-data").attr('data', 'show');
+      }else{
+        $("#caret-data").addClass('hide');
+        $("#caret-data").attr('data', 'hidden');
+      }
+    });
 });
 function unformat(str){
   return str.replace(/[^0-9\.]+/g,"");

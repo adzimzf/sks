@@ -11,9 +11,6 @@
 |
  */
 
-Route::get('/', function () {
-	return view('welcome');
-});
 Route::get('productajaxCRUD', function () {
 	$products = App\Product::all();
 	return view('ajax.index')->with('products', $products);
@@ -47,7 +44,7 @@ Route::delete('productajaxCRUD/{product_id?}', function ($product_id) {
 Route::get('BNI', function () {
 	return view('master.master');
 });
-Route::get('tulisba', 'TulisBaController@index');
+Route::get('tulisba', 'TulisBaController@index')->middleware('auth');
 Route::post('cetak', 'TulisBaController@cetak');
 Route::post('cetakPDF', 'TulisBaController@cetakPDF');
 Route::post('tambah_teler', 'TulisBaController@tambah_teler');
@@ -82,39 +79,70 @@ Route::get('laporan_uang_masuk/isiTabelUangMasukAjax', 'LaporanUangMasukControll
 Route::get('laporan_uang_masuk/isiTabelUangKeluarAjax', 'LaporanUangMasukController@isiTabelUangKeluarAjax');
 
 //route data pegawai
-Route::get('dataPegawai', 'DataPegawaiController@index');
+// Route::get('dataPegawai', 'DataPegawaiController@index')->middleware('auth');
+// Route::post('simpanManager', 'DataPegawaiController@simpanManager');
+
+// //edit data manager
+// Route::get('editManager/{id?}', 'DataPegawaiController@editManager');
+
+// //update data manager
+// Route::post('editManager/{id?}/update', 'DataPegawaiController@updateManager');
+// //hapus data manager
+// Route::get('hapusManager/{id?}', 'DataPegawaiController@hapusManager');
+
+// //simpan data penyelia
+// Route::post('simpanPenyelia', 'DataPegawaiController@simpanPenyelia');
+
+// //edit data penyelia
+// Route::get('editPenyelia/{id?}', 'DataPegawaiController@editPenyelia');
+// //update data penyelia
+// Route::post('editPenyelia/{id?}/update', 'DataPegawaiController@updatePenyelia');
+// //hapus data manager
+// Route::get('hapusPenyelia/{id?}', 'DataPegawaiController@hapusPenyelia');
+
+// //simpan data operator
+// Route::post('simpanOperator', 'DataPegawaiController@simpanOperator');
+
+// //edit data operator
+// Route::get('editOperator/{id?}', 'DataPegawaiController@editOperator');
+// //update data operator
+// Route::post('editOperator/{id?}/update', 'DataPegawaiController@updateOperator');
+// //hapus data manager
+// Route::get('hapusOperator/{id?}', 'DataPegawaiController@hapusOperator');
+// //simpan data cabang
+// Route::post('simpanCabang', 'DataPegawaiController@simpanCabang');
+// //edit data cabang
+// Route::get('editCabang/{id?}', 'DataPegawaiController@editCabang');
+// //update data cabang
+// Route::post('editCabang/{id?}/update', 'DataPegawaiController@updateCabang');
+
 Route::post('simpanManager', 'DataPegawaiController@simpanManager');
+Route::post('simpanOperator', 'DataPegawaiController@simpanOperator');
 
-//edit data manager
-Route::get('dataPegawai/editManager/{id?}', 'DataPegawaiController@editManager');
-
-//update data manager
-Route::post('dataPegawai/editManager/{id?}/update', 'DataPegawaiController@updateManager');
-//hapus data manager
-Route::get('dataPegawai/hapusManager/{id?}', 'DataPegawaiController@hapusManager');
-
+Route::post('simpanCabang', 'DataPegawaiController@simpanCabang');
 //simpan data penyelia
 Route::post('simpanPenyelia', 'DataPegawaiController@simpanPenyelia');
 
-//edit data penyelia
-Route::get('dataPegawai/editPenyelia/{id?}', 'DataPegawaiController@editPenyelia');
-//update data penyelia
-Route::post('dataPegawai/editPenyelia/{id?}/update', 'DataPegawaiController@updatePenyelia');
-//hapus data manager
-Route::get('dataPegawai/hapusPenyelia/{id?}', 'DataPegawaiController@hapusPenyelia');
+Route::group(['prefix' => 'dataPegawai', 'middleware' => 'auth'], function () {
+	Route::get('/', 'DataPegawaiController@index');
+	Route::get('editManager/{id?}', 'DataPegawaiController@editManager');
+	Route::post('editManager/{id?}/update', 'DataPegawaiController@updateManager');
+	Route::get('hapusManager/{id?}', 'DataPegawaiController@hapusManager');
+	Route::get('editPenyelia/{id?}', 'DataPegawaiController@editPenyelia');
+	Route::post('editPenyelia/{id?}/update', 'DataPegawaiController@updatePenyelia');
+	Route::get('hapusPenyelia/{id?}', 'DataPegawaiController@hapusPenyelia');
+	Route::get('editOperator/{id?}', 'DataPegawaiController@editOperator');
+	Route::post('editOperator/{id?}/update', 'DataPegawaiController@updateOperator');
+	Route::get('hapusOperator/{id?}', 'DataPegawaiController@hapusOperator');
+	Route::get('editCabang/{id?}', 'DataPegawaiController@editCabang');
+	Route::post('editCabang/{id?}/update', 'DataPegawaiController@updateCabang');
 
-//simpan data operator
-Route::post('simpanOperator', 'DataPegawaiController@simpanOperator');
+});
 
-//edit data operator
-Route::get('dataPegawai/editOperator/{id?}', 'DataPegawaiController@editOperator');
-//update data operator
-Route::post('dataPegawai/editOperator/{id?}/update', 'DataPegawaiController@updateOperator');
-//hapus data manager
-Route::get('dataPegawai/hapusOperator/{id?}', 'DataPegawaiController@hapusOperator');
-//simpan data cabang
-Route::post('simpanCabang', 'DataPegawaiController@simpanCabang');
-//edit data cabang
-Route::get('dataPegawai/editCabang/{id?}', 'DataPegawaiController@editCabang');
-//update data cabang
-Route::post('dataPegawai/editCabang/{id?}/update', 'DataPegawaiController@updateCabang');
+//untuk login
+Route::get('/', function () {
+	return view('auth.login');
+});
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

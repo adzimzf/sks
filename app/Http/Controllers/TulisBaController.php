@@ -23,7 +23,11 @@ class TulisBaController extends Controller {
 		$cabang = cabang::all();
 		$teler = teler::all();
 		$data = temuan::all()->last();
-		return view('tulis_ba.tes')->with(['data' => $data, 'penyelia' => $penyelia, 'manajer' => $manajer, 'operator' => $operator, 'cabang' => $cabang, 'teler' => $teler, 'saksi' => $saksi]);
+		//nomber ba
+		//123/SKS/2016
+		$no_ba = str_replace("/SKS/" . date('Y'), "", $data->no_ba);
+		$no_ba = (($data->no_ba) + 1) . "/SKS/" . date('Y');
+		return view('tulis_ba.tes')->with(['data' => $data, 'no_ba' => $no_ba, 'penyelia' => $penyelia, 'manajer' => $manajer, 'operator' => $operator, 'cabang' => $cabang, 'teler' => $teler, 'saksi' => $saksi]);
 	}
 	public function cetak(Request $input) {
 		//delete session
@@ -68,6 +72,7 @@ class TulisBaController extends Controller {
 				'total' => $total]);
 			/*///insert into DB
 			$temuan = new temuan;
+			$temuan->no_ba = $no_ba;
 			$temuan->tanggal_ditemukan = $tanggal_ditemukan;
 			$temuan->penyelia = $penyelia;
 			$temuan->manajer = $manager;

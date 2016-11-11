@@ -94,7 +94,26 @@
               <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
               </a>
-               <span id="logo" class="logo-lg" style="color: orange; font-size: 30px;">Tulis<b> BA</b></span>
+               <span id="logo" class="logo-lg" style="color: orange; font-size: 30px;">Tulis<b> BA</b>
+               </span>
+               <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
               </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -108,8 +127,17 @@
                         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Abcd Efgh IJK</p>
-                        <a href="#">53159</a>
+                        <p id="caret">
+                            {{ Auth::user()->name }} <span class="caret" ></span>
+                        </p>
+                        <p id="caret-data" data="hidden" class="text-right hide">
+                            <a href="{{ url('/logout') }}" class="btn btn-drak btn-xs" title="">Logout</a>
+                            <a href="#" class="btn btn-drak btn-xs" title="">
+                                Setting
+                            </a>
+                        </p>
+
+                        <a href="#">{{ Auth::user()->npp }}</a>
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -123,7 +151,7 @@
                     </li>
                     <li class="{{(Request::is('laporan_uang_masuk') ? 'active' : '')}} treeview">
                     <a href="{{url('laporan_uang_masuk')}}">
-                  <i class="fa fa-expand"></i><span>Uang Msuk/Keluar</span>
+                  <i class="fa fa-expand"></i><span>Uang Masuk/Keluar</span>
                 </a>
               </li>
               <li class="{{(Request::is('laporansortir') ? 'active' : '')}} treetview">

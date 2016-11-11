@@ -44,3 +44,20 @@ label:hover{
     background-color: #e6e6e6;
     border-color: #adadad;
 }
+
+.btn-drak {
+  color: #fff;
+  background-color: #161616;
+  border-color: #717272;
+}
+.btn-drak:focus,
+.btn-drak.focus {
+  color: #fff;
+  background-color: #424344;
+  border-color: #122b40;
+}
+.btn-drak:hover {
+  color: #fff;
+  background-color: #424344;
+  border-color: #204d74;
+}

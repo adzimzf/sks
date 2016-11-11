@@ -20,7 +20,7 @@ class LaporanTemuanController extends Controller {
 			$json = $json .
 			'{
     			"no":"' . $nomer . '",
-    			"no_ba":"' . "SKS/2016/$nomer" . '",
+    			"no_ba":"' . $teler->no_ba . '",
     			"tanggal_ditemukan":"' . $teler->tanggal_ditemukan . '",
     			"penyelia":"' . $teler->penyelia . '",
     			"manajer":"' . $teler->manajer . '",

@@ -4,7 +4,7 @@
   <div class="col-md-6">
     <!-- /input-group dan label nya -->
     <label>Nomer BA</label>
-    <input type="text" class="form-control" value="{{$data->id}}" readonly="" disabled="disabled" placeholder="No BA">
+    <input type="text" class="form-control" value="{{$no_ba}}" readonly="" name="no_ba" placeholder="No BA">
     <label>Penyelia</label>
     <div class="input-group" style="width:100%;">
       <select class="select2" name="penyelia" style="width: 100%;">

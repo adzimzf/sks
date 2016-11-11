@@ -1,0 +1,129 @@
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-family: Raleway;
+    background: url(http://www.fourseasons.com/content/dam/fourseasons_magazine/JKR/jakarta-cityscape-1600x900.jpg/jcr:content/renditions/original) no-repeat fixed;
+    /*
+  background: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg) no-repeat fixed;*/
+    background-size: cover;
+    background-position: 50%;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+.bg-transparent{
+	background: rgba(249, 247, 247, 1)!important;
+}
+.panel-transparent {
+    background: none;
+}
+
+.panel-transparent .panel-heading {
+    background: rgba(249, 247, 247, 1)!important;
+}
+
+.panel-transparent .panel-body {
+    background: rgba(249, 247, 247, 0.4)!important;
+}
+/* navbar */
+.navbar-transparent {
+    background: rgba(249, 247, 247, 1)!important;
+    border-color: #E7E7E7;
+}
+/* title */
+.navbar-transparent .navbar-brand {
+    color: #777;
+}
+.navbar-transparent .navbar-brand:hover,
+.navbar-transparent .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-transparent .navbar-nav > li > a {
+    color: #777;
+}
+.navbar-transparent .navbar-nav > li > a:hover,
+.navbar-transparent .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-transparent .navbar-nav > .active > a, 
+.navbar-transparent .navbar-nav > .active > a:hover, 
+.navbar-transparent .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-transparent .navbar-nav > .open > a, 
+.navbar-transparent .navbar-nav > .open > a:hover, 
+.navbar-transparent .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-transparent .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-transparent .navbar-nav > .dropdown > a:hover .caret,
+.navbar-transparent .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-transparent .navbar-nav > .open > a .caret, 
+.navbar-transparent .navbar-nav > .open > a:hover .caret, 
+.navbar-transparent .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-transparent .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-transparent .navbar-toggle:hover,
+.navbar-transparent .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-transparent .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+@media (max-width: 767px) {
+    .navbar-transparent .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-transparent .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-transparent .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+
+/*.panel {
+	opacity: 0.4;
+  margin: 0 auto;
+  -moz-transform: translate3d(-50%, 0, 0);
+  -ms-transform: translate3d(-50%, 0, 0);
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+  width: 350px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: inherit;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+/*.panel-body:before {
+  content: "";
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  background: inherit;
+  left: -5%;
+  right: 0;
+  bottom: 0;
+  top: -5%;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}*/
+
+*/
