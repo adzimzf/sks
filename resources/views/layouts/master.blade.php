@@ -124,7 +124,7 @@
                 <div class="user-panel">
                     <!--Gambar User-->
                     <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="dist/img/{{Auth::user()->foto}}" class="avatar img-circle" width="45" height="45" alt="User Image" >
                     </div>
                     <div class="pull-left info">
                         <p id="caret">
@@ -132,7 +132,7 @@
                         </p>
                         <p id="caret-data" data="hidden" class="text-right hide">
                             <a href="{{ url('/logout') }}" class="btn btn-drak btn-xs" title="">Logout</a>
-                            <a href="#" class="btn btn-drak btn-xs" title="">
+                            <a href="{{url('profil')}}" class="btn btn-drak btn-xs" title="">
                                 Setting
                             </a>
                         </p>
@@ -154,7 +154,7 @@
                   <i class="fa fa-expand"></i><span>Uang Masuk/Keluar</span>
                 </a>
               </li>
-              <li class="{{(Request::is('laporansortir') ? 'active' : '')}} treetview">
+              <li class="{{(Request::is('laporanSortasi') ? 'active' : '')}} treetview">
                 <a href="laporanSortasi">
                   <i class="fa fa-file"></i><span>Laporan Sortasi</span>
                 </a>
@@ -169,6 +169,7 @@
                   <i class="fa fa-list"></i><span>Data Pegawai</span>
                 </a>
               </li>
+
               </ul>
             </section>
         </aside>

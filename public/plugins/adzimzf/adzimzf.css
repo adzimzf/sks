@@ -61,3 +61,8 @@ label:hover{
   background-color: #424344;
   border-color: #204d74;
 }
+img.dp{
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+}

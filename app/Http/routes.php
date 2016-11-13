@@ -139,6 +139,11 @@ Route::group(['prefix' => 'dataPegawai', 'middleware' => 'auth'], function () {
 
 });
 
+Route::group(['prefix' => 'profil', 'middleware' => 'auth'], function () {
+	Route::get('/', 'ProfilController@index');
+	Route::post('update', 'ProfilController@update');
+});
+
 //untuk login
 Route::get('/', function () {
 	return view('auth.login');
